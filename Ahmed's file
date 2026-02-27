@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+public class hello {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Apartment Price Calculator:");
+        System.out.print("Is it a Villa or Normal apartment? (villa/normal): ");
+        System.out.print("What neighborhood type? (good/average/poor): ");
+        System.out.print("What is the space in square meters? ");
+        String apartmentType = scanner.nextLine().toLowerCase(), neighborhood = scanner.nextLine().toLowerCase();
+        int space = scanner.nextInt(), pricePerSquareMeter = 0; ;
+        
+        if (neighborhood.equals("good")) {
+            pricePerSquareMeter = 1000;
+        } 
+        else if (neighborhood.equals("average")) {
+            pricePerSquareMeter = 700;
+        } 
+        else if (neighborhood.equals("poor")) {
+            pricePerSquareMeter = 500;
+        }
+        double totalPrice = space * pricePerSquareMeter;
+        if (apartmentType.equals("normal")) {
+            System.out.print("What floor is it? (1, 2, 3, etc...): ");
+            int floor = scanner.nextInt();
+            if (floor == 1) {
+                totalPrice = totalPrice * 1.0; 
+            } 
+            else if (floor == 2) {
+                totalPrice = totalPrice * 1.1;  
+            } 
+            else if (floor == 3) {
+                totalPrice = totalPrice * 1.2;  
+            } 
+            else if (floor >= 4) {
+                totalPrice = totalPrice * 1.3;  
+            }
+        }
+
+        System.out.println("Total Price: $" + String.format("%.2f", totalPrice));
+        scanner.close();
+    }
+} 
